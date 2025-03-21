@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ezeepay Neo - Modern Financial Platform</title>
+    <style>
+      :root {
+        --neon-blue: #00f3ff;
+        --cyber-purple: #6c00ff;
+        --dark-bg: #0a0a14;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background: var(--dark-bg);
+        color: white;
+        font-family: "Segoe UI", sans-serif;
+        overflow-x: hidden;
+      }
+
+      .gradient-bg {
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        background: linear-gradient(45deg, var(--cyber-purple), var(--dark-bg));
+        z-index: -1;
+        animation: gradientShift 12s infinite alternate;
+      }
+
+      .navbar {
+        padding: 1.5rem 10%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        /*backdrop-filter: blur(10px);*/
+      }
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+      }
+      .nav-links a {
+        position: relative;
+        padding: 0.5rem 1rem;
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--neon-blue);
+        transition: width 0.3s ease;
+      }
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+      .logo {
+        font-size: 1.8rem;
+        font-weight: bold;
+        background: linear-gradient(to right, var(--neon-blue), #fff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .hero {
+        height: 80vh;
+        display: flex;
+        align-items: center;
+        padding: 0 10%;
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 1;
+      }
+
+      .cyber-text {
+        font-size: 4rem;
+        background: linear-gradient(to right, var(--neon-blue), #fff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 0 0 20px rgba(0, 243, 255, 0.3);
+      }
+
+      .grid-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        padding: 4rem 10%;
+      }
+
+      .feature-card {
+        background: rgba(255, 255, 255, 0.05);
+        padding: 2rem;
+        border-radius: 15px;
+        border: 1px solid rgba(0, 243, 255, 0.1);
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+
+      .feature-card:hover {
+        transform: translateY(-10px) rotateX(10deg);
+        box-shadow: 0 10px 30px rgba(0, 243, 255, 0.2);
+      }
+
+      @keyframes gradientShift {
+        0% {
+          background-position: 0% 50%;
+        }
+        100% {
+          background-position: 100% 50%;
+        }
+      }
+
+      .cyber-border {
+        position: relative;
+        padding: 2rem;
+      }
+
+      .cyber-border::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: 15px;
+        padding: 2px;
+        background: linear-gradient(
+          45deg,
+          var(--neon-blue),
+          var(--cyber-purple)
+        );
+        -webkit-mask: linear-gradient(#fff 0 0) content-box,
+          linear-gradient(#fff 0 0);
+        mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+      }
+
+      .glow {
+        animation: glowPulse 2s infinite alternate;
+      }
+
+      @keyframes glowPulse {
+        from {
+          filter: drop-shadow(0 0 5px var(--neon-blue));
+        }
+        to {
+          filter: drop-shadow(0 0 20px var(--neon-blue));
+        }
+      }
+
+      .benefits-section {
+        padding: 5rem 10%;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .benefits-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        margin-top: 4rem;
+      }
+
+      .benefit-card {
+        background: rgba(255, 255, 255, 0.03);
+        padding: 2.5rem;
+        border-radius: 15px;
+        position: relative;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+
+      .benefit-card:hover {
+        background: rgba(255, 255, 255, 0.05);
+        transform: translateY(-10px);
+      }
+
+      .benefit-icon {
+        width: 60px;
+        height: 60px;
+        background: rgba(0, 243, 255, 0.1);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+        transition: all 0.3s ease;
+      }
+
+      .benefit-card:hover .benefit-icon {
+        transform: rotate(15deg) scale(1.1);
+        background: var(--neon-blue);
+      }
+
+      .benefit-number {
+        position: absolute;
+        top: -20px;
+        right: -20px;
+        font-size: 3rem;
+        font-weight: bold;
+        color: rgba(255, 255, 255, 0.05);
+      }
+
+      .section-heading {
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        background: linear-gradient(to right, var(--neon-blue), #fff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .services-section {
+        padding: 5rem 10%;
+        background: rgba(0, 0, 0, 0.3);
+        position: relative;
+      }
+
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 3rem;
+        margin-top: 4rem;
+      }
+
+      .service-card {
+        background: rgba(255, 255, 255, 0.03);
+        padding: 3rem;
+        border-radius: 20px;
+        transition: all 0.4s ease;
+        min-height: 400px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .service-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 40px rgba(0, 243, 255, 0.1);
+      }
+
+      .service-icon {
+        font-size: 3.5rem;
+        margin-bottom: 1.5rem;
+        background: linear-gradient(to right, var(--neon-blue), #fff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .service-features {
+        list-style: none;
+        margin: 2rem 0;
+      }
+
+      .service-features li {
+        padding: 0.8rem 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .service-features li::before {
+        content: "▹";
+        color: var(--neon-blue);
+      }
+
+      .about-section {
+        padding: 6rem 10%;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .digital-bharat-heading {
+        font-size: 4.5rem;
+        line-height: 1.1;
+        margin-bottom: 2rem;
+        background: linear-gradient(to right, #00f3ff, #6c00ff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-transform: uppercase;
+      }
+
+      .quote-container {
+        position: relative;
+        margin: 3rem 0;
+        padding: 2rem;
+        border: 2px solid;
+        border-image: linear-gradient(45deg, #00f3ff, #6c00ff) 1;
+        display: inline-block;
+      }
+
+      .mantra {
+        font-size: 2.5rem;
+        font-weight: bold;
+        background: linear-gradient(to right, #fff, #00f3ff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 0 0 20px rgba(0, 243, 255, 0.3);
+      }
+
+      .about-content {
+        max-width: 800px;
+        margin: 2rem auto;
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: rgba(255, 255, 255, 0.9);
+      }
+
+      .vision-box {
+        background: rgba(0, 243, 255, 0.05);
+        padding: 2rem;
+        border-radius: 15px;
+        margin: 3rem 0;
+        border: 1px solid rgba(0, 243, 255, 0.1);
+      }
+
+      .vision-heading {
+        color: var(--neon-blue);
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .partnership-section {
+        padding: 5rem 10%;
+        background: rgba(0, 0, 0, 0.4);
+      }
+
+      .partnership-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+        margin-top: 3rem;
+      }
+
+      .partnership-card {
+        background: rgba(255, 255, 255, 0.03);
+        padding: 2rem;
+        border-radius: 15px;
+        border: 1px solid rgba(0, 243, 255, 0.1);
+        transition: all 0.3s ease;
+      }
+
+      .partnership-card:hover {
+        transform: translateY(-10px);
+        background: linear-gradient(
+          45deg,
+          rgba(0, 243, 255, 0.05),
+          rgba(108, 0, 255, 0.05)
+        );
+      }
+
+      .role-badge {
+        background: var(--neon-blue);
+        color: var(--dark-bg);
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        display: inline-block;
+        margin-bottom: 1rem;
+        font-weight: bold;
+      }
+
+      .benefits-list {
+        list-style: none;
+        margin: 1.5rem 0;
+      }
+
+      .benefits-list li {
+        padding: 0.8rem 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+      }
+
+      .benefits-list li::before {
+        content: "✓";
+        color: var(--neon-blue);
+        font-weight: bold;
+      }
+
+      @media (max-width: 768px) {
+        .partnership-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .partnership-card {
+          margin-bottom: 2rem;
+        }
+      }
+
+      .partnership-card {
+        position: relative;
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .partnership-card::before {
+        content: "";
+        position: absolute;
+        width: 150%;
+        height: 150%;
+        background: radial-gradient(
+          circle at var(--x) var(--y),
+          rgba(0, 243, 255, 0.1),
+          transparent 60%
+        );
+        opacity: 0;
+        transition: opacity 0.3s;
+        pointer-events: none;
+      }
+
+      .partnership-card:hover::before {
+        opacity: 1;
+      }
+
+      .role-badge {
+        transition: transform 0.3s ease;
+      }
+      /* responsive */
+      @media (max-width: 1200px) {
+        .hero {
+          height: auto;
+          padding: 4rem 5%;
+        }
+
+        .cyber-text {
+          font-size: 3.5rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        :root {
+          font-size: 14px;
+        }
+
+        /* Navigation */
+        .nav-links {
+          gap: 1.5rem;
+        }
+
+        /* Hero Section */
+        .cyber-text {
+          font-size: 2.5rem;
+          line-height: 1.2;
+        }
+
+        /* Grid Layouts */
+        .grid-container,
+        .benefits-grid,
+        .services-grid,
+        .partnership-grid {
+          grid-template-columns: 1fr;
+          padding: 2rem 5%;
+        }
+
+        /* Cards */
+        .feature-card,
+        .benefit-card,
+        .service-card,
+        .partnership-card {
+          padding: 1.5rem;
+          margin-bottom: 1.5rem;
+        }
+
+        /* Partnership Section */
+        .partnership-section {
+          padding: 3rem 5%;
+        }
+
+        @media (max-width: 480px) {
+          /* Navigation */
+          .navbar {
+            padding: 1rem 5%;
+          }
+
+          .logo {
+            font-size: 1.4rem;
+          }
+
+          /* Hero Section */
+          .cyber-text {
+            font-size: 2rem;
+          }
+
+          /* Benefits Section */
+          .benefit-icon {
+            width: 50px;
+            height: 50px;
+          }
+
+          /* Services Section */
+          .service-card {
+            min-height: auto;
+            padding: 1.5rem;
+          }
+
+          /* About Section */
+          .digital-bharat-heading {
+            font-size: 2.8rem;
+          }
+
+          .mantra {
+            font-size: 1.8rem;
+          }
+
+          /* Partnership Cards */
+          .role-badge {
+            font-size: 0.9rem;
+          }
+
+          @media (max-width: 360px) {
+            :root {
+              font-size: 13px;
+            }
+
+            .cyber-text {
+              font-size: 1.8rem;
+            }
+
+            .digital-bharat-heading {
+              font-size: 2.2rem;
+            }
+
+            .mantra {
+              font-size: 1.5rem;
+            }
+          }
+
+          @media (max-width: 768px) {
+            .nav-links {
+              flex-direction: column;
+              position: fixed;
+              top: 0;
+              left: -100%;
+              right: 0;
+              background: var(--dark-bg);
+              opacity: 1;
+              padding: 2rem;
+              width: 100%;
+              max-width: 300px;
+              transition: left 0.3s ease-in-out;
+              gap: 1rem;
+              z-index: 1000;
+              display: flex !important; /* Force display */
+              height: 100vh;
+            }
+
+            .nav-links.active {
+              display: flex;
+              right: 0;
+              left: 0;
+            }
+
+            .nav-links a {
+              padding: 1rem;
+              width: 100%;
+              text-align: left;
+            }
+
+            .cta-button {
+              margin: 1rem auto;
+              width: 90%;
+            }
+          }
+          
+      
+      /* Touch Optimization */
+      @media (hover: none) {
+        .feature-card:hover,
+        .benefit-card:hover,
+        .service-card:hover {
+          transform: none;
+        }
+
+        .nav-links a::after {
+          display: none;
+        }
+      }
+
+      /* Add hamburger menu */
+      .hamburger {
+        z-index: 1100;
+        position: relative;
+        display: none;
+        cursor: pointer;
+        background: none;
+        border: none;
+        padding: 1rem;
+      }
+
+      .hamburger span {
+        display: block;
+        width: 25px;
+        height: 2px;
+        background: var(--neon-blue);
+        margin: 5px 0;
+        transition: all 0.3s ease;
+      }
+
+      @media (max-width: 768px) {
+        
+
+        .hamburger {
+          display: block;
+        }
+
+        .hamburger.active span:nth-child(1) {
+          transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+          opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+          transform: rotate(-45deg) translate(7px, -6px);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="gradient-bg"></div>
+
+    <nav class="navbar">
+      <div class="logo">EZEEPAY</div>
+      <button class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <div class="nav-links">
+        <a href="#" class="glow">Home</a>
+        <a href="abouttrial.html" target="_blank" class="glow">About</a>
+        <a href="srvc.html" class="glow">Services</a>
+        <a href="products.html" class="glow">Products</a>
+        <a href="blog.html" class="glow">Blog</a>
+        <a href="contact.html" class="glow">Contact</a>
+      </div>
+    </nav>
+
+    <section class="hero">
+      <div class="hero-content">
+        <h1 class="cyber-text">Borderless<br />Financial Freedom</h1>
+        <p class="glow" style="margin-top: 2rem">
+          Next-generation global payments platform
+        </p>
+      </div>
+    </section>
+
+    <section class="grid-container">
+      <div class="feature-card cyber-border">
+        <h3>Instant Transfers</h3>
+        <p>Send money worldwide in seconds</p>
+      </div>
+      <div class="feature-card cyber-border">
+        <h3>Zero Fees</h3>
+        <p>No hidden charges</p>
+      </div>
+      <div class="feature-card cyber-border">
+        <h3>Multi-Currency</h3>
+        <p>Hold & exchange 50+ currencies</p>
+      </div>
+    </section>
+
+    <section class="benefits-section">
+      <h2 class="section-heading cyber-text">Why Choose Ezeepay?</h2>
+
+      <div class="benefits-grid">
+        <!-- Benefit 1 -->
+        <div class="benefit-card cyber-border">
+          <div class="benefit-number">01</div>
+          <div class="benefit-icon">🔒</div>
+          <h3>Military-Grade Security</h3>
+          <p class="glow">
+            Bank-level encryption and multi-factor authentication to protect
+            your transactions
+          </p>
+        </div>
+
+        <!-- Benefit 2 -->
+        <div class="benefit-card cyber-border">
+          <div class="benefit-number">02</div>
+          <div class="benefit-icon">💸</div>
+          <h3>Lowest Fees Guaranteed</h3>
+          <p class="glow">
+            Save up to 70% compared to traditional banking systems
+          </p>
+        </div>
+
+        <!-- Benefit 3 -->
+        <div class="benefit-card cyber-border">
+          <div class="benefit-number">03</div>
+          <div class="benefit-icon">🌍</div>
+          <h3>Global Coverage</h3>
+          <p class="glow">
+            Operate in 150+ countries with real-time currency conversion
+          </p>
+        </div>
+
+        <!-- Benefit 4 -->
+        <div class="benefit-card cyber-border">
+          <div class="benefit-number">04</div>
+          <div class="benefit-icon">⏱️</div>
+          <h3>24/7 Support</h3>
+          <p class="glow">
+            Instant help through our AI assistant or human specialists
+          </p>
+        </div>
+
+        <!-- Benefit 5 -->
+        <div class="benefit-card cyber-border">
+          <div class="benefit-number">05</div>
+          <div class="benefit-icon">🚀</div>
+          <h3>Future-Ready Tech</h3>
+          <p class="glow">
+            Blockchain integration and API access for developers
+          </p>
+        </div>
+
+        <!-- Benefit 6 -->
+        <div class="benefit-card cyber-border">
+          <div class="benefit-number">06</div>
+          <div class="benefit-icon">🎁</div>
+          <h3>Reward System</h3>
+          <p class="glow">
+            Earn crypto credits and exclusive perks with every transaction
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="services-section">
+      <h2 class="section-heading cyber-text">Our Services</h2>
+
+      <div class="services-grid">
+        <!-- Banking & Digital Services -->
+        <div class="service-card cyber-border">
+          <div>
+            <div class="service-icon">📱🌍</div>
+            <h3>Banking & Digital Services</h3>
+            <ul class="service-features">
+              <li>Multi-currency digital wallet integration</li>
+              <li>Instant cross-border payments & remittances</li>
+              <li>AI-powered financial management tools</li>
+              <li>Mobile-first banking infrastructure</li>
+              <li>Secure digital identity verification</li>
+              <li>API-driven payment solutions</li>
+            </ul>
+          </div>
+          <p class="glow">
+            Traditional banking meets digital innovation with zero legacy
+            overhead
+          </p>
+        </div>
+
+        <!-- NEO Banking Services -->
+        <div class="service-card cyber-border">
+          <div>
+            <div class="service-icon">🚀🔗</div>
+            <h3>NEO Banking Services</h3>
+            <ul class="service-features">
+              <li>Blockchain-based transaction processing</li>
+              <li>Decentralized finance (DeFi) integrations</li>
+              <li>Crypto-fiat bridge solutions</li>
+              <li>Smart contract automation</li>
+              <li>Web3 payment gateways</li>
+              <li>NFT-based financial instruments</li>
+            </ul>
+          </div>
+          <p class="glow">
+            Next-generation banking infrastructure powered by distributed ledger
+            technology
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-section">
+      <h2 class="digital-bharat-heading">We Are Here To Make Digital Bharat</h2>
+
+      <div class="quote-container">
+        <blockquote class="mantra">"KUCH BHI PAY KARO EAZY KARO"</blockquote>
+      </div>
+
+      <div class="about-content">
+        <p>
+          At Ezeepay Neo, we're revolutionizing digital payments for India's
+          next billion internet users. Our platform bridges the gap between
+          cutting-edge financial technology and everyday transactions, making
+          digital payments accessible, secure, and effortless for everyone.
+        </p>
+
+        <div class="vision-box cyber-border">
+          <h3 class="vision-heading">Our Vision</h3>
+          <p>
+            To create a financially inclusive India where every citizen, from
+            metropolitan cities to rural villages, can participate in the
+            digital economy with confidence. We aim to be the backbone of
+            India's digital transformation by 2025, powering over 10 million
+            daily transactions across 500+ districts.
+          </p>
+        </div>
+
+        <p>
+          Combining Bharat's entrepreneurial spirit with Silicon Valley
+          innovation, we're building payment solutions that work as smoothly in
+          Mumbai high-rises as they do in Rajasthan villages. Our technology
+          stack supports 12 regional languages and works even on low-end
+          smartphones, truly democratizing digital finance.
+        </p>
+      </div>
+    </section>
+
+    <section class="partnership-section">
+      <h2 class="section-heading cyber-text">Become a Part of Us</h2>
+
+      <p class="about-content" style="text-align: center; margin-bottom: 3rem">
+        We are inviting all distributors, retailers, and individuals to be part
+        of our digital and smart solutions that can help them earn profits and
+        prestige. Join India's fastest growing fintech ecosystem with exclusive
+        benefits and growth opportunities.
+      </p>
+
+      <div class="partnership-grid">
+        <!-- Agent Card -->
+        <div class="partnership-card cyber-border">
+          <div class="role-badge">Agent</div>
+          <h3>Become an Agent</h3>
+          <ul class="benefits-list">
+            <li>Basic commission: 1.5% on all transactions</li>
+            <li>Unlimited customer onboarding</li>
+            <li>Instant settlement payments</li>
+            <li>Free digital toolkit & POS app</li>
+            <li>Local area exclusivity</li>
+          </ul>
+          <p class="glow">
+            Ideal for: Retail shop owners, Individual entrepreneurs
+          </p>
+        </div>
+
+        <!-- Distributor Card -->
+        <div class="partnership-card cyber-border">
+          <div class="role-badge">Distributor</div>
+          <h3>Become a Distributor</h3>
+          <ul class="benefits-list">
+            <li>Higher commission: 2.5% + override on agents</li>
+            <li>Manage up to 50 agents</li>
+            <li>Priority support team</li>
+            <li>Business growth training</li>
+            <li>Advanced analytics dashboard</li>
+          </ul>
+          <p class="glow">
+            Ideal for: Established businesses, Regional managers
+          </p>
+        </div>
+
+        <!-- Master Distributor Card -->
+        <div class="partnership-card cyber-border">
+          <div class="role-badge">Master Distributor</div>
+          <h3>Become a Master Distributor</h3>
+          <ul class="benefits-list">
+            <li>Premium commission: 3.5% + overrides</li>
+            <li>Manage multiple distributors</li>
+            <li>Luxury reward programs</li>
+            <li>National-level exposure</li>
+            <li>VIP event invitations</li>
+          </ul>
+          <p class="glow">Ideal for: Corporate partners, State-level leaders</p>
+        </div>
+
+        <!-- District Franchise -->
+        <div class="partnership-card cyber-border">
+          <div class="role-badge">District Franchise</div>
+          <h3>Become a District Franchise</h3>
+          <ul class="benefits-list">
+            <li>Exclusive territory rights</li>
+            <li>4% commission + profit sharing</li>
+            <li>Marketing support fund</li>
+            <li>Dedicated operations team</li>
+            <li>Branding & infrastructure support</li>
+          </ul>
+          <p class="glow">Ideal for: Business groups, Established franchises</p>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      // Animate feature cards on scroll
+      const cards = document.querySelectorAll(".feature-card");
+
+      const animateOnScroll = () => {
+        cards.forEach((card) => {
+          const cardTop = card.getBoundingClientRect().top;
+          if (cardTop < window.innerHeight * 0.8) {
+            card.style.opacity = "1";
+            card.style.transform = "translateY(0)";
+          }
+        });
+      };
+
+      window.addEventListener("scroll", animateOnScroll);
+      animateOnScroll(); // Initial check
+
+      // Dynamic gradient interaction
+      document.addEventListener("mousemove", (e) => {
+        const x = e.clientX / window.innerWidth;
+        const y = e.clientY / window.innerHeight;
+        document.documentElement.style.setProperty(
+          "--cyber-purple",
+          `hsl(${x * 360}, 100%, 50%)`
+        );
+      });
+
+      // Hover effect for cards
+      cards.forEach((card) => {
+        card.addEventListener("mousemove", (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          card.style.transform = `perspective(1000px) rotateX(${
+            (y - rect.height / 2) / 10
+          }deg) rotateY(${-(x - rect.width / 2) / 10}deg)`;
+        });
+
+        card.addEventListener("mouseleave", () => {
+          card.style.transform = "perspective(1000px) rotateX(0) rotateY(0)";
+        });
+      });
+
+      // Animate benefit numbers on scroll
+      const benefitNumbers = document.querySelectorAll(".benefit-number");
+
+      const animateNumbers = () => {
+        benefitNumbers.forEach((number) => {
+          const rect = number.getBoundingClientRect();
+          if (rect.top < window.innerHeight * 0.8) {
+            number.style.transform = "rotate(15deg) scale(1.2)";
+            number.style.color = "rgba(0, 243, 255, 0.2)";
+          }
+        });
+      };
+
+      window.addEventListener("scroll", animateNumbers);
+      animateNumbers();
+
+      // Random emoji animation
+      document.querySelectorAll(".benefit-icon").forEach((icon) => {
+        icon.addEventListener("mouseenter", () => {
+          icon.style.animation = "emojiJump 0.5s ease";
+        });
+
+        icon.addEventListener("animationend", () => {
+          icon.style.animation = "";
+        });
+      });
+
+      document.querySelectorAll(".service-card").forEach((card) => {
+        card.addEventListener("mousemove", (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+
+          card.style.setProperty("--x", `${x}px`);
+          card.style.setProperty("--y", `${y}px`);
+
+          card.style.background = `
+                radial-gradient(
+                    circle at var(--x) var(--y),
+                    rgba(0, 243, 255, 0.1),
+                    rgba(0, 0, 0, 0.2)
+                ),
+                rgba(255, 255, 255, 0.03)
+            `;
+        });
+
+        card.addEventListener("mouseleave", () => {
+          card.style.background = "rgba(255, 255, 255, 0.03)";
+        });
+      });
+
+      // Animate mantra text
+      const mantra = document.querySelector(".mantra");
+
+      mantra.addEventListener("mousemove", (e) => {
+        const x = (e.clientX / window.innerWidth - 0.5) * 20;
+        const y = (e.clientY / window.innerHeight - 0.5) * 20;
+        mantra.style.transform = `translate(${x}px, ${y}px)`;
+      });
+
+      mantra.addEventListener("mouseleave", () => {
+        mantra.style.transform = "translate(0, 0)";
+      });
+
+      // Parallax effect for about section
+      window.addEventListener("scroll", () => {
+        const scrolled = window.pageYOffset;
+        const aboutSection = document.querySelector(".about-section");
+        aboutSection.style.backgroundPositionY = `${scrolled * 0.5}px`;
+      });
+
+      document.querySelectorAll(".partnership-card").forEach((card) => {
+        card.addEventListener("mousemove", (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+
+          // Update gradient position
+          card.style.setProperty("--x", `${x}px`);
+          card.style.setProperty("--y", `${y}px`);
+
+          // 3D tilt effect
+          const tiltX = (y - rect.height / 2) / 15;
+          const tiltY = -(x - rect.width / 2) / 15;
+          card.style.transform = `
+                translateY(-10px)
+                perspective(1000px)
+                rotateX(${tiltX}deg)
+                rotateY(${tiltY}deg)
+            `;
+
+          // Badge animation
+          const badge = card.querySelector(".role-badge");
+          badge.style.transform = `translate(${tiltY * 2}px, ${tiltX * 2}px)`;
+        });
+
+        card.addEventListener("mouseleave", () => {
+          card.style.transform = "translateY(0)";
+          card.style.setProperty("--x", "50%");
+          card.style.setProperty("--y", "50%");
+          const badge = card.querySelector(".role-badge");
+          badge.style.transform = "translate(0, 0)";
+        });
+      });
+
+      // Mobile menu close on click
+      document.querySelectorAll(".nav-links a").forEach((link) => {
+        link.addEventListener("click", () => {
+          if (window.innerWidth <= 768) {
+            document.querySelector(".nav-links").classList.remove("active");
+          }
+        });
+      });
+
+      // Viewport height fix for mobile
+      function setViewportHeight() {
+        let vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty("--vh", `${vh}px`);
+      }
+
+      setViewportHeight();
+      window.addEventListener("resize", setViewportHeight);
+    </script>
+
+    <script>
+      const hamburger = document.querySelector(".hamburger");
+      const navLinks = document.querySelector(".nav-links");
+
+      hamburger.addEventListener("click", () => {
+        hamburger.classList.toggle("active");
+        navLinks.classList.toggle("active");
+      });
+
+      document.addEventListener("click", (e) => {
+        if (!navLinks.contains(e.target) && !hamburger.contains(e.target)) {
+          hamburger.classList.remove("active");
+          navLinks.classList.remove("active");
+        }
+      });
+
+      document.querySelectorAll(".nav-links a").forEach((link) => {
+        link.addEventListener("click", () => {
+          hamburger.classList.remove("active");
+          navLinks.classList.remove("active");
+        });
+      });
+    </script>
+  </body>
+</html>

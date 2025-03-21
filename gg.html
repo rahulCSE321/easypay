@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EzeePay - Simplified Payments</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f8f9fa;
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(90deg, #4caf50, #2e7d32);
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        header nav ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        header nav ul li {
+            margin-left: 1.5rem;
+        }
+
+        header nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: url('https://via.placeholder.com/1500x500') no-repeat center center/cover;
+            color:green; 
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin: 0 0 1rem;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin: 0 0 2rem;
+        }
+
+        .hero button {
+            background: #4caf50;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .hero button:hover {
+            background: #388e3c;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .features div {
+            background: white;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .features div h3 {
+            margin: 0 0 1rem;
+            color: #4caf50;
+        }
+
+        .features div p {
+            margin: 0;
+        }
+
+        footer {
+            background: #2e7d32;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        footer a {
+            color: #81c784;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>EzeePay</h1>
+        <nav>
+            <ul>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h2>Welcome to EzeePay</h2>
+        <p>Your trusted platform for seamless and secure payments.</p>
+        <button id="getStartedButton">Get Started</button>
+    </section>
+
+    <section id="features" class="features">
+        <div>
+            <h3>Fast Transactions</h3>
+            <p>Experience lightning-fast payments with our platform.</p>
+        </div>
+        <div>
+            <h3>Secure Payments</h3>
+            <p>Your security is our top priority with encrypted transactions.</p>
+        </div>
+        <div>
+            <h3>24/7 Support</h3>
+            <p>Our team is here to assist you anytime, anywhere.</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 EzeePay. All Rights Reserved. <a href="#">Privacy Policy</a></p>
+    </footer>
+
+    <script>
+        document.getElementById('getStartedButton').addEventListener('click', function() {
+            alert('Thank you for choosing EzeePay! Let’s get started.');
+        });
+    </script>
+</body>
+</html>

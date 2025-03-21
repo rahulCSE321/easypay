@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EzeePay - Blog</title>
+    <!-- Include existing CSS styles -->
+    <style>
+      :root {
+        --neon-blue: #00f3ff;
+        --cyber-purple: #6c00ff;
+        --dark-bg: #0a0a14;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background: var(--dark-bg);
+        color: white;
+        font-family: "Segoe UI", sans-serif;
+        overflow-x: hidden;
+      }
+
+      .gradient-bg {
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        background: linear-gradient(45deg, var(--cyber-purple), var(--dark-bg));
+        z-index: -1;
+        animation: gradientShift 12s infinite alternate;
+      }
+
+      .navbar {
+        padding: 1.5rem 10%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+      }
+
+      .nav-links a {
+        position: relative;
+        padding: 0.5rem 1rem;
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--neon-blue);
+        transition: width 0.3s ease;
+      }
+
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+
+      .logo {
+        font-size: 1.8rem;
+        font-weight: bold;
+        background: linear-gradient(to right, var(--neon-blue), #fff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .hero {
+        height: 80vh;
+        display: flex;
+        align-items: center;
+        padding: 0 10%;
+      }
+
+      .cyber-text {
+        font-size: 4rem;
+        background: linear-gradient(to right, var(--neon-blue), #fff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 0 0 20px rgba(0, 243, 255, 0.3);
+      }
+
+      .grid-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        padding: 4rem 10%;
+      }
+
+      .feature-card {
+        background: rgba(255, 255, 255, 0.05);
+        padding: 2rem;
+        border-radius: 15px;
+        border: 1px solid rgba(0, 243, 255, 0.1);
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+
+      .feature-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 30px rgba(0, 243, 255, 0.2);
+      }
+
+      @keyframes gradientShift {
+        0% {
+          background-position: 0% 50%;
+        }
+        100% {
+          background-position: 100% 50%;
+        }
+      }
+
+      .cyber-border {
+        position: relative;
+        padding: 2rem;
+        border-radius: 15px;
+        border: 1px solid rgba(0, 243, 255, 0.1);
+      }
+
+      section {
+        padding: 4rem 10%;
+        margin-bottom: 4rem;
+      }
+
+      .section-heading {
+        text-align: center;
+        margin-bottom: 2rem;
+        font-size: 2.5rem;
+        background: linear-gradient(to right, var(--neon-blue), #fff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .about-hero {
+        text-align: center;
+      }
+
+      .about-hero h1 {
+        font-size: 3rem;
+        margin-bottom: 2rem;
+      }
+
+      .vision-section h2 {
+        font-size: 2.5rem;
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+
+      .stat-card {
+        text-align: center;
+        padding: 2rem;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 15px;
+        transition: transform 0.3s ease;
+      }
+
+      .stat-card:hover {
+        transform: translateY(-10px);
+      }
+
+      .partner-grid {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+
+      .partner-grid img {
+        max-width: 100px;
+        height: auto;
+        transition: transform 0.3s ease;
+      }
+
+      .partner-grid img:hover {
+        transform: scale(1.1);
+      }
+
+      @media (max-width: 768px) {
+        .nav-links {
+          flex-direction: column;
+          position: fixed;
+          top: 0;
+          left: -100%;
+          right: 0;
+          background: var(--dark-bg);
+          padding: 2rem;
+          width: 100%;
+          max-width: 300px;
+          transition: left 0.3s ease-in-out;
+          gap: 1rem;
+          z-index: 1000;
+          height: 100vh;
+        }
+
+        .nav-links.active {
+          left: 0;
+        }
+
+        .nav-links a {
+          padding: 1rem;
+          width: 100%;
+          text-align: left;
+        }
+
+        .hamburger {
+          display: block;
+          z-index: 1100;
+          cursor: pointer;
+          background: none;
+          border: none;
+          padding: 1rem;
+        }
+
+        .hamburger span {
+          display: block;
+          width: 25px;
+          height: 2px;
+          background: var(--neon-blue);
+          margin: 5px 0;
+          transition: all 0.3s ease;
+        }
+
+        .hamburger.active span:nth-child(1) {
+          transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+          opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+          transform: rotate(-45deg) translate(7px, -6px);
+        }
+      }
+
+      @media (hover: none) {
+        .feature-card:hover,
+        .stat-card:hover,
+        .partner-grid img:hover {
+          transform: none;
+        }
+
+        .nav-links a::after {
+          display: none;
+        }
+      }
+      /* Add these styles after existing CSS */
+
+      .blog-hero {
+        text-align: center;
+        padding: 4rem 10%;
+        margin-bottom: 3rem;
+      }
+
+      .blog-posts-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        padding: 2rem 10%;
+      }
+
+      .blog-post {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 15px;
+        padding: 2rem;
+        border: 1px solid rgba(0, 243, 255, 0.1);
+        transition: transform 0.3s ease;
+      }
+
+      .blog-post:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0, 243, 255, 0.2);
+      }
+
+      .post-title {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        background: linear-gradient(to right, var(--neon-blue), #fff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .post-meta {
+        font-size: 0.9rem;
+        color: #888;
+        margin-bottom: 1rem;
+      }
+
+      .post-excerpt {
+        margin-bottom: 1.5rem;
+        line-height: 1.6;
+      }
+
+      .read-more {
+        background: linear-gradient(
+          45deg,
+          var(--neon-blue),
+          var(--cyber-purple)
+        );
+        border: none;
+        padding: 8px 20px;
+        border-radius: 20px;
+        color: white;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+        text-transform: uppercase;
+        font-size: 0.9rem;
+      }
+
+      @media (max-width: 768px) {
+        .blog-hero h1 {
+          font-size: 2rem;
+        }
+
+        .blog-post {
+          padding: 1.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="gradient-bg"></div>
+    <nav class="navbar">
+      <div class="logo">EZEEPAY</div>
+      <button class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <div class="nav-links">
+        <a href="esypytrial.html">Home</a>
+        <a href="abouttrial.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="products.html">Products</a>
+        <a href="#" class="active">Blog</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </nav>
+
+    <section class="blog-hero">
+      <div class="cyber-border">
+        <h1 class="dynamic-heading">EzeePay - Blog</h1>
+        <h2 class="dynamic-heading" style="margin-top: 1rem">
+          Latest Updates & Insights
+        </h2>
+      </div>
+    </section>
+
+    <main class="blog-posts-grid">
+      <!-- Blog Post 1 -->
+      <article class="blog-post cyber-border">
+        <h3 class="post-title">
+          Micro ATM Machine vs. Traditional ATMs: What Sets Them Apart?
+        </h3>
+        <div class="post-meta">
+          <span class="author">Ezeepay</span> |
+          <span class="date">July 20, 2023</span>
+        </div>
+        <p class="post-excerpt">
+          Banking services have greatly improved thanks to technology in recent
+          decades. One significant invention that has changed the financial
+          landscape is the Micro ATM machine. These devices are real
+          game-changers because they bring banking services to people who
+          couldn’t access them before...
+        </p>
+        <button class="read-more">Read More</button>
+      </article>
+
+      <!-- Blog Post 2 -->
+      <article class="blog-post cyber-border">
+        <h3 class="post-title">
+          Starting a Successful Domestic Money Transfer Business with Ezeepay
+        </h3>
+        <div class="post-meta">
+          <span class="author">Ezeepay</span> |
+          <span class="date">July 18, 2023</span>
+        </div>
+        <p class="post-excerpt">
+          Are you looking to start your own business in the booming domestic
+          money transfer industry? Look no further than Ezeepay, the ultimate
+          solution for aspiring agents. With Ezeepay, you have the opportunity
+          to tap into a lucrative market...
+        </p>
+        <button class="read-more">Read More</button>
+      </article>
+
+      <!-- Blog Post 3 -->
+      <article class="blog-post cyber-border">
+        <h3 class="post-title">Increasing Earnings at Your Kirana Store</h3>
+        <div class="post-meta">
+          <span class="author">Ezeepay</span> |
+          <span class="date">July 15, 2023</span>
+        </div>
+        <p class="post-excerpt">
+          Kirana shops play a vital role in Indian retail, serving as community
+          hubs for locals. These small businesses cater to their customers’
+          everyday needs by selling a variety of household essentials...
+        </p>
+        <button class="read-more">Read More</button>
+      </article>
+
+      <!-- Add remaining blog posts following the same structure -->
+    </main>
+
+    <!-- Include existing JavaScript -->
+    <script>
+      // Existing JavaScript code
+      const hamburger = document.querySelector(".hamburger");
+      const navLinks = document.querySelector(".nav-links");
+
+      hamburger.addEventListener("click", () => {
+        hamburger.classList.toggle("active");
+        navLinks.classList.toggle("active");
+      });
+
+      document.addEventListener("click", (e) => {
+        if (!navLinks.contains(e.target) && !hamburger.contains(e.target)) {
+          hamburger.classList.remove("active");
+          navLinks.classList.remove("active");
+        }
+      });
+
+      document.querySelectorAll(".nav-links a").forEach((link) => {
+        link.addEventListener("click", () => {
+          hamburger.classList.remove("active");
+          navLinks.classList.remove("active");
+        });
+      });
+      // Dynamic gradient interaction
+      document.addEventListener("mousemove", (e) => {
+        const x = e.clientX / window.innerWidth;
+        const y = e.clientY / window.innerHeight;
+        document.documentElement.style.setProperty(
+          "--cyber-purple",
+          `hsl(${x * 360}, 100%, 50%)`
+        );
+      });
+
+      // Animate stat cards
+      document.querySelectorAll(".stat-card").forEach((card) => {
+        card.addEventListener("mousemove", (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+
+          card.style.background = `
+                      radial-gradient(
+                          circle at ${x}px ${y}px,
+                          rgba(0, 243, 255, 0.1),
+                          rgba(108, 0, 255, 0.05)
+                      ),
+                      rgba(255, 255, 255, 0.05)
+                  `;
+        });
+
+        card.addEventListener("mouseleave", () => {
+          card.style.background = "rgba(255, 255, 255, 0.05)";
+        });
+      });
+    </script>
+  </body>
+</html>

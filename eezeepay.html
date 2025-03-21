@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ezeepay Neo - Modern Financial Platform</title>
+    <style>
+      :root {
+        --neon-blue: #00f3ff;
+        --cyber-purple: #6c00ff;
+        --dark-bg: #0a0a14;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background: var(--dark-bg);
+        color: white;
+        font-family: "Segoe UI", sans-serif;
+        overflow-x: hidden;
+      }
+
+      .gradient-bg {
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        background: linear-gradient(45deg, var(--cyber-purple), var(--dark-bg));
+        z-index: -1;
+        animation: gradientShift 12s infinite alternate;
+      }
+
+      .navbar {
+        padding: 1.5rem 10%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        backdrop-filter: blur(10px);
+      }
+
+      .logo {
+        font-size: 1.8rem;
+        font-weight: bold;
+        background: linear-gradient(to right, var(--neon-blue), #fff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .hero {
+        height: 80vh;
+        display: flex;
+        align-items: center;
+        padding: 0 10%;
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 1;
+      }
+
+      .cyber-text {
+        font-size: 4rem;
+        background: linear-gradient(to right, var(--neon-blue), #fff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 0 0 20px rgba(0, 243, 255, 0.3);
+      }
+
+      .grid-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        padding: 4rem 10%;
+      }
+
+      .feature-card {
+        background: rgba(255, 255, 255, 0.05);
+        padding: 2rem;
+        border-radius: 15px;
+        border: 1px solid rgba(0, 243, 255, 0.1);
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+
+      .feature-card:hover {
+        transform: translateY(-10px) rotateX(10deg);
+        box-shadow: 0 10px 30px rgba(0, 243, 255, 0.2);
+      }
+
+      @keyframes gradientShift {
+        0% {
+          background-position: 0% 50%;
+        }
+        100% {
+          background-position: 100% 50%;
+        }
+      }
+
+      .cyber-border {
+        position: relative;
+        padding: 2rem;
+      }
+
+      .cyber-border::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: 15px;
+        padding: 2px;
+        background: linear-gradient(
+          45deg,
+          var(--neon-blue),
+          var(--cyber-purple)
+        );
+        -webkit-mask: linear-gradient(#fff 0 0) content-box,
+          linear-gradient(#fff 0 0);
+        mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+      }
+
+      .glow {
+        animation: glowPulse 2s infinite alternate;
+      }
+
+      @keyframes glowPulse {
+        from {
+          filter: drop-shadow(0 0 5px var(--neon-blue));
+        }
+        to {
+          filter: drop-shadow(0 0 20px var(--neon-blue));
+        }
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="gradient-bg"></div>
+
+    <nav class="navbar">
+      <div class="logo">EZEEPAY</div>
+      <div class="nav-links">
+        <a href="#" class="glow">Products</a>
+        <a href="#" class="glow">Security</a>
+        <a href="#" class="glow">Company</a>
+      </div>
+    </nav>
+
+    <section class="hero">
+      <div class="hero-content">
+        <h1 class="cyber-text">Borderless<br />Financial Freedom</h1>
+        <p class="glow" style="margin-top: 2rem">
+          Next-generation global payments platform
+        </p>
+      </div>
+    </section>
+
+    <section class="grid-container">
+      <div class="feature-card cyber-border">
+        <h3>Instant Transfers</h3>
+        <p>Send money worldwide in seconds</p>
+      </div>
+      <div class="feature-card cyber-border">
+        <h3>Zero Fees</h3>
+        <p>No hidden charges</p>
+      </div>
+      <div class="feature-card cyber-border">
+        <h3>Multi-Currency</h3>
+        <p>Hold & exchange 50+ currencies</p>
+      </div>
+    </section>
+
+    <script>
+      // Animate feature cards on scroll
+      const cards = document.querySelectorAll(".feature-card");
+
+      const animateOnScroll = () => {
+        cards.forEach((card) => {
+          const cardTop = card.getBoundingClientRect().top;
+          if (cardTop < window.innerHeight * 0.8) {
+            card.style.opacity = "1";
+            card.style.transform = "translateY(0)";
+          }
+        });
+      };
+
+      window.addEventListener("scroll", animateOnScroll);
+      animateOnScroll(); // Initial check
+
+      // Dynamic gradient interaction
+      document.addEventListener("mousemove", (e) => {
+        const x = e.clientX / window.innerWidth;
+        const y = e.clientY / window.innerHeight;
+        document.documentElement.style.setProperty(
+          "--cyber-purple",
+          `hsl(${x * 360}, 100%, 50%)`
+        );
+      });
+
+      // Hover effect for cards
+      cards.forEach((card) => {
+        card.addEventListener("mousemove", (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          card.style.transform = `perspective(1000px) rotateX(${
+            (y - rect.height / 2) / 10
+          }deg) rotateY(${-(x - rect.width / 2) / 10}deg)`;
+        });
+
+        card.addEventListener("mouseleave", () => {
+          card.style.transform = "perspective(1000px) rotateX(0) rotateY(0)";
+        });
+      });
+
+      
+    </script>
+
+    
+  </body>
+</html>
